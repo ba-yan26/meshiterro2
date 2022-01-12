@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     # サインイン後にどこに遷移するか
     # after_sign_in_path_forはdevise側が用意しているメソッド
     # deviseの初期設定はroot_pathになっているために遷移先を変更する必要がある
-    about_path
+    post_images_path
   end
   
   def after_sign_out_path_for(sesource)

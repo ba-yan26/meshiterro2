@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "homes#top"
   resources :post_images, only: [:new, :index, :show, :create, :destroy]
-  resources :users, only: [:show, :edit]
+  resources :users, only: [:show, :edit, :update]
   # resourcesはルーティングを一括して自動生成してくれる機能
   # onlyオプションを使用することで記述されているアクションだけをルーティングする
   # ルーティングの詳細はrails routesで確認できる

@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :post_images, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
   # post_imagesを複数投稿できるようになる。userが削除された場合post_imagesのデータも削除する
   has_one_attached :profile_image
   

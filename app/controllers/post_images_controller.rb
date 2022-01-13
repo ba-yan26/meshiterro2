@@ -11,8 +11,11 @@ class PostImagesController < ApplicationController
     # @post_imageはPostImage.newによって生成された空のモデル
     # モデル名.カラム名 で保存するカラムの中身を操作できる
     # current_user.id でログイン中のユーザー情報を取得することができる(deviseのヘルパーメソッド)
-    @post_image.save
+    if @post_image.save
     redirect_to post_images_path
+    else
+      render :new
+    end
   end
 
   def index

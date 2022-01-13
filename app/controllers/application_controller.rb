@@ -1,4 +1,8 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_user!, except: [:top]
+  # authenticate_userメソッドで、ログイン認証されていなければログイン画面へリダイレクトする
+  # exceptは指定したアクションをbefore_actionの対象から外す
+  
   before_action :configure_permitted_parameters, if: :devise_controller?
   # before_actionはコントローラーの全てのアクションが実行される前に何らかの処理を行う時に使用する
   # if:はbefore_actionのオプションの一つ。値にメソッド名（:devise_controller）を指定することで戻り値がtrueであれば処理を実行する

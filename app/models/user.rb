@@ -5,9 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :post_images, dependent: :destroy
   has_many :post_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   # post_imagesを複数投稿できるようになる。userが削除された場合post_imagesのデータも削除する
   has_one_attached :profile_image
-  
+
   def get_profile_image(size)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/sample-author1.jpg')

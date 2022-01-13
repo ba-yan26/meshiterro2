@@ -3,8 +3,8 @@ class PostImage < ApplicationRecord
   belongs_to :user
   # userに属するpost
   has_many :post_comments, dependent: :destroy
-  
-  
+  has_many :favorites, dependent: :destroy
+
   def get_image
   # ここで記述するメソッドはアクションとは違い、特定の処理を名前で呼び出すことができる
     unless image.attached?
@@ -13,5 +13,9 @@ class PostImage < ApplicationRecord
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     image
+  end
+
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
   end
 end
